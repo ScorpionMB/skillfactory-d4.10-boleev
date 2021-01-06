@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Издательства</title>
+</head>
+<body>
+    <ul>
+       <li><a href="http://127.0.0.1:8000/">Главная страница</a></li>
+       <li><a href="http://127.0.0.1:8000/admin/">Страница администратора</a></li> 
+    </ul>
+
+    {% for pub in publishers %}
+    <ul class="pub">
+        <h3>Издательство: {{ pub.title }}</h3>
+        <hr>
+        <li>
+            {% for book in books %}
+            {% if book.publisher.title == pub.title %}
+            <h5 class="book">{{ book.title }}</h5>
+            <ul>
+                <li>Автор: {{ book.author }}</li>
+                <li>Издательство: {{ book.publisher }}</li>
+                <li>Год издания: {{ book.year_release }}</li>
+                <li class="ISBN"><small>ISBN: {{ book.ISBN}}</small></li>
+                <hr class="mini_hr">
+            </ul>
+            {% endif %}
+            {% endfor %}
+        </li>
+    </ul>
+    {% endfor %}
+</body>
+</html>
