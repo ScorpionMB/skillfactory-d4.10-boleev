@@ -19,8 +19,7 @@ def index(request):
 
 def publisher(request):
     publishers = Publisher.objects.all()
-    books = Book.objects.all()
-    context = {'books': books, 'publishers': publishers}
+    context = {'publishers': publishers}
     return render(request, 'p_library/publishers.html', context)
 
 def book_increment(request):
