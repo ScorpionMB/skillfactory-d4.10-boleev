@@ -20,8 +20,7 @@
         <h3>Издательство: {{ pub.title }}</h3>
         <hr>
         <li>
-            {% for book in books %}
-            {% if book.publisher.title == pub.title %}
+            {% for book in pub.books.all %}
             <h5 class="book">{{ book.title }}</h5>
             <ul>
                 <li>Автор: {{ book.author }}</li>
@@ -30,7 +29,6 @@
                 <li class="ISBN"><small>ISBN: {{ book.ISBN}}</small></li>
                 <hr class="mini_hr">
             </ul>
-            {% endif %}
             {% endfor %}
         </li>
     </ul>
